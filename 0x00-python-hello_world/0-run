@@ -1,2 +1,2 @@
-#!/c/msys64/mingw64/bin/python3.9
-python $PYFILE
+#!/bin/bash
+python3 $PYFILE
