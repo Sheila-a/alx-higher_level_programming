@@ -1,1 +1,1 @@
-rectory for Python Classes and Objects
+Directory for Python Classes and Objects
