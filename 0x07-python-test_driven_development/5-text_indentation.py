@@ -1,20 +1,19 @@
 #!/usr/bin/python3
-"""
-This module defines a function 'text_indentation'
-that prints the parameter 'text' in a particular
-format
-"""
+"""Text indentations"""
 
 
 def text_indentation(text):
+    """Prints a text with 2 new lines
+    Args:
+        text (string): The text to print.
+    Raises:
+        TypeError: If text is not a string.
+
     """
-    prints the string 'text' with 2 new lines arter each
-    of these characters: . , ? and :
-    """
+    special = ['.', '?', ':']
     if type(text) != str:
-        raise TypeError('text must be a string')
-    for i in text:
-        e = ''
-        if i in '.,?:':
-            e = '\n\n'
-        print(i, end=e)
+        raise TypeError("text must be string")
+    for x in text:
+        print(x, end='')
+        if x in special:
+            print('\n\n', end='')
