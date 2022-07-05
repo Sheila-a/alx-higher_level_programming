@@ -1,20 +1,40 @@
-import function from module
-	>>> text_ind = __import__('5-text_indentation').text_indentation
+A test to for the text_indenation function
+
+Import the module
+>>> import sys
+>>> sys.path.insert(1, '../')
+>>> lib = __import__("5-text_indentation")
+>>> func = lib.text_indentation
+
+#Normal addition test
+>>> func("Lorem Ipsum.?:")
+Lorem Ipsum.
+<BLANKLINE>
+?
+<BLANKLINE>
+:
+<BLANKLINE>
 
 
-check regular text
-	>>> text_ind("Ebube")
-	Ebube
+#Type Errors
 
-Check text with delimiters
-	>>> text_ind("What's your name?My name is Ebube.")
-	What's your name?
-	<BLANKLINE>
-	My name is Ebube.
-	<BLANKLINE>
-
-check for non string
-	>>> text_ind(12)
-	Traceback (most recent call last):
-		...
-	TypeError: text must be a string
+>>> func(4)
+Traceback (most recent call last):
+...
+TypeError: text must be string
+>>> func(12.3)
+Traceback (most recent call last):
+...
+TypeError: text must be string
+>>> func([])
+Traceback (most recent call last):
+...
+TypeError: text must be string
+>>> func({})
+Traceback (most recent call last):
+...
+TypeError: text must be string
+>>> func(1j)
+Traceback (most recent call last):
+...
+TypeError: text must be string

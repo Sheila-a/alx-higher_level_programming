@@ -1,58 +1,36 @@
-Import module function
+Test the matrix divided function
 
-	>>> div = __import__('2-matrix_divided').matrix_divided
+>>> import sys
+>>> sys.path.insert(1, '../')
+>>> lib = __import__("2-matrix_divided")
+>>> func = lib.matrix_divided
 
-declare variable
-	>>> matrix = [[1,2,3],[4,5,6]]
+#Define test matricies
+>>> x = [[0,2],[1,2],[4,4],[7,8],[-54,3.2]]
+>>> y = [[1,9 + 1j,3],[1.2, "", 1.5]]
+>>> z = [[1,2,3],[4,5]]
 
-	>>> div(matrix, 3)
-	[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
-	
-check no change to variable
-	>>> print(matrix)
-	[[1, 2, 3], [4, 5, 6]]
+#Normal checks
+>>> func(x, 1)
+[[0.0, 2.0], [1.0, 2.0], [4.0, 4.0], [7.0, 8.0], [-54.0, 3.2]]
+>>> func(x, 2)
+[[0.0, 1.0], [0.5, 1.0], [2.0, 2.0], [3.5, 4.0], [-27.0, 1.6]]
 
-check for unequal elements
-	>>> matrix = [[1,2,3],[4,5,6,8]]
-	
-	>>> div(matrix, 3)
-	Traceback (most recent call last):
-		...
-	TypeError: Each row of the matrix must have the same size
 
-check for elements that are not numbers
-	>>> matrix = [[1,2,3,"t"],[4,5,6,"e"]]
+#Type Errors
+>>> func(x, "")
+Traceback (most recent call last):
+...
+TypeError: div must be a number
 
-	>>> div(matrix, 4)
-	Traceback (most recent call last):
-		...
-	TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> func(y, 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-	>>> matrix = [[1,2,3],[4,5,6],"New Element"]
 
-	>>> div(matrix, 8)
-	Traceback (most recent call last):
-		...
-	TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-check for division by zero
-	>>> matrix = [[1,2,3,"t"],[4,5,6,"e"]]
-
-	>>> div(matrix, 0)
-	Traceback (most recent call last):
-		...
-	ZeroDivisionError: division by zero
-
-check for division by not a number
-	>>> matrix = [[1,2,3,"t"],[4,5,6,"e"]]
-
-	>>> div(matrix, 'div')
-	Traceback (most recent call last):
-		...
-	TypeError: div must be a number
-
-check passing None
-	>>> div(None, 3)
-	Traceback (most recent call last):
-		...
-	TypeError: matrix must be a matrix (list of lists) of integers/floats
+#unbalanced rows
+>>> func(z, 1)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size

@@ -1,37 +1,46 @@
-import function from module
-	>>> print_sq = __import__('4-print_square').print_square
+A test to for the print_square function
 
-check for 4
-	>>> print_sq(4)
-	####
-	####
-	####
-	####
-	<BLANKLINE>
+Import the module
+>>> import sys
+>>> sys.path.insert(1, '../')
+>>> lib = __import__("4-print_square")
+>>> func = lib.print_square
 
-check for 0
-	>>> print_sq(0)
-	<BLANKLINE>
-
-check for 1
-	>>> print_sq(1)
-	#
-	<BLANKLINE>
+#Normal addition test
+'''
+>>> func(3)
+###
+###
+###
 
 
-check for number not integer
-	>>> print_sq(None)
-	Traceback (most recent call last):
-		...
-	TypeError: size must be an integer
+#Type Errors
 
-	>>> print_sq("e")
-	Traceback (most recent call last):
-		...
-	TypeError: size must be an integer
+>>> func("")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> func(12.3)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> func([])
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> func({})
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> func(1j)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
 
-check for negative number
-	>>> print_sq(-4)
-	Traceback (most recent call last):
-		...
-	ValueError: size must be >= 0
+
+
+#value Errors
+>>> func(-1)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
